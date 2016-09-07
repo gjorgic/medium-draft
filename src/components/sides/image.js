@@ -23,13 +23,20 @@ export default class ImageButton extends React.Component {
     if (file.type.indexOf('image/') === 0) {
       // console.log(this.props.getEditorState());
       // eslint-disable-next-line no-undef
-      const src = URL.createObjectURL(file);
-      this.props.setEditorState(addNewBlock(
-        this.props.getEditorState(),
-        Block.IMAGE, {
-          src,
-        }
-      ));
+      const next = (src) => {
+        this.props.setEditorState(addNewBlock(
+          this.props.getEditorState(),
+          Block.IMAGE, {
+            src,
+          }
+        ));
+      }
+
+      if(this.props.handler) {
+        this.props.handler(file, next);
+      } else {
+        next(URL.createObjectURL(file));
+      }
     }
     this.props.close();
   }
