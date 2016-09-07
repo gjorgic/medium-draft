@@ -59,4 +59,3 @@ node_modules
 .eslintcache
 dist/
 hash.json
-lib/
