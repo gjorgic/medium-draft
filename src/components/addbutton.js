@@ -179,6 +179,7 @@ export default class AddButton extends React.Component {
                 return (
                   <Button
                     key={button.title}
+                    handler={button.handler}
                     getEditorState={this.props.getEditorState}
                     setEditorState={this.props.setEditorState}
                     close={this.openToolbar}
